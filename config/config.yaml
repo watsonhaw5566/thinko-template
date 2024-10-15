@@ -1,0 +1,12 @@
+# 服务相关配置
+server:
+  mode: "debug" # debug | release | test
+  address: ":3699"
+  staticPath: "public"
+
+# log日志配置
+log:
+  path: "./logs"
+  name: "log"
+  model: "file" # console | file
+  maxAge: 30 # 日志多少天后自动删除, 以天为单位
