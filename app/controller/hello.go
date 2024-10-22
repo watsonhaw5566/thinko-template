@@ -2,14 +2,13 @@ package controller
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/think-go/tg/tgutl"
+	"github.com/think-go/tg"
 )
 
-func SayHello(ctx *gin.Context) {
+func SayHello(ctx *tg.Context) {
 	num1 := 1
 	num2 := 0
 	num3 := num1 / num2
 	fmt.Println(num3)
-	tgutl.Fail(ctx, "登录失败")
+	ctx.Fail("登录失败")
 }
