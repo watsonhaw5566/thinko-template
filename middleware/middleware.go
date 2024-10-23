@@ -1,8 +1,11 @@
 package middleware
 
 import (
+	"fmt"
 	"github.com/think-go/tg"
+	"github.com/think-go/tg/tglog"
 	"net/http"
+	"time"
 )
 
 // Cors 跨域处理中间件
@@ -26,18 +29,9 @@ func Cors() tg.HandlerFunc {
 
 // Logger 日志中间件
 func Logger() tg.HandlerFunc {
-	//return gin.LoggerWithFormatter(func(params gin.LogFormatterParams) string {
-	//	return fmt.Sprintf(
-	//		"[ThinkGO] | %s | %d | %s | %s | %s | %s | \n",
-	//		params.TimeStamp.Format("2006-01-02 15:04:05"),
-	//		params.StatusCode,
-	//		params.ClientIP,
-	//		params.Latency,
-	//		params.Method,
-	//		params.Path,
-	//	)
-	//})
 	return func(ctx *tg.Context) {
+		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), ctx.Latency(), ctx.Request.Method, ctx.Request.RequestURI)
+		tglog.Log().Info(log)
 		ctx.Next()
 	}
 }

@@ -1,14 +1,20 @@
 package controller
 
 import (
-	"fmt"
 	"github.com/think-go/tg"
 )
 
-func SayHello(ctx *tg.Context) {
-	num1 := 1
-	num2 := 0
-	num3 := num1 / num2
-	fmt.Println(num3)
-	ctx.Fail("登录失败")
+type HomeData struct {
+	Count    int
+	Title    string
+	SubTitle string
+}
+
+// HomeView 首页宣传页
+func HomeView(ctx *tg.Context) {
+	ctx.View("index.html", &HomeData{
+		Count:    9863763,
+		Title:    "ThinkGO",
+		SubTitle: "欢迎使用ThinkGO框架",
+	})
 }

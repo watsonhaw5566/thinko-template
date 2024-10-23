@@ -7,14 +7,12 @@ import (
 )
 
 // BindController 注册路由,绑定控制器,绑定中间件
-func BindController(router *tg.Engine) {
+func BindController(engine *tg.Engine) {
 	// 跨域中间件
-	router.Use(middleware.Cors)
+	engine.Use(middleware.Cors)
 	// 日志中间件
-	router.Use(middleware.Logger)
+	engine.Use(middleware.Logger)
 
-	hello := router.Group("/api/v1")
-	{
-		hello.GET("/hello", controller.SayHello)
-	}
+	// 首页宣传页
+	engine.GET("/", controller.HomeView)
 }
