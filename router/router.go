@@ -15,4 +15,11 @@ func BindController(engine *tg.Engine) {
 
 	// 首页宣传页
 	engine.GET("/", controller.HomeView)
+
+	// 分组路由
+	router := engine.Group("/api/v1")
+	{
+		router.GET("hello", controller.SayHello)
+		router.POST("world", controller.SayWorld)
+	}
 }

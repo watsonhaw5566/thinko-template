@@ -2,6 +2,7 @@ package controller
 
 import (
 	"github.com/think-go/tg"
+	"think-go/api"
 )
 
 type HomeData struct {
@@ -17,4 +18,17 @@ func HomeView(ctx *tg.Context) {
 		Title:    "ThinkGO",
 		SubTitle: "欢迎使用ThinkGO框架",
 	})
+}
+
+// SayHello GET接口测试
+func SayHello(ctx *tg.Context) {
+	name := ctx.GetQuery("name")
+	ctx.Success(api.SayHelloRes{Say: name + "说hello"})
+}
+
+// SayWorld POST接口测试
+func SayWorld(ctx *tg.Context) {
+	req := new(api.SayHelloReq)
+	ctx.BindStructValidate(req)
+	ctx.Success(req)
 }

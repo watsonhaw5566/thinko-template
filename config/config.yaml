@@ -12,3 +12,5 @@ log:
   name: "log"
   model: "file" # console | file
   maxAge: 30 # 日志多少天后自动删除, 以天为单位
+
+# 自定义额外的一些配置写下面
