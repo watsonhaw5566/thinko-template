@@ -30,5 +30,5 @@ func SayHello(ctx *tg.Context) {
 func SayWorld(ctx *tg.Context) {
 	req := new(api.SayHelloReq)
 	ctx.BindStructValidate(req)
-	ctx.Success(req)
+	ctx.Success(req.Name)
 }

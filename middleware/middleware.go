@@ -30,8 +30,10 @@ func Cors() tg.HandlerFunc {
 // Logger 日志中间件
 func Logger() tg.HandlerFunc {
 	return func(ctx *tg.Context) {
-		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), ctx.Latency(), ctx.Request.Method, ctx.Request.RequestURI)
-		tglog.Log().Info(log)
+		start := time.Now()
 		ctx.Next()
+		stop := time.Now()
+		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), stop.Sub(start), ctx.Request.Method, ctx.Request.RequestURI)
+		tglog.Log().Info(log)
 	}
 }
