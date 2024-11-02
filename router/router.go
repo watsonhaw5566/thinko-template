@@ -22,4 +22,6 @@ func BindController(engine *tg.Engine) {
 		router.GET("hello", controller.SayHello)
 		router.POST("world", controller.SayWorld)
 	}
+
+	engine.POST("/user", controller.UserList)
 }

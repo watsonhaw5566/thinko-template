@@ -13,4 +13,16 @@ log:
   model: "file" # console | file
   maxAge: 30 # 日志多少天后自动删除, 以天为单位
 
+# mysql相关配置
+mysql:
+  default:
+    link: "think-sso:dcGLEpj5JZReztBw@tcp(123.56.82.75:3306)/think-sso?charset=utf8mb4&parseTime=true&loc=Local"
+    maxOpen: 100 #最大打开连接数
+    maxIdle: 50 #最大空闲连接数
+    maxIdleTime: 0 #连接在空闲状态下的最大存活时间
+    maxLifeTime: 0 #连接的最大生命周期，从创建到被关闭的总时间
+
 # 自定义额外的一些配置写下面
+extra:
+  jwtKey: "think-go"
+  jwtExpiresAt: 30

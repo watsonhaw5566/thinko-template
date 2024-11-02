@@ -11,6 +11,11 @@ type HomeData struct {
 	SubTitle string
 }
 
+type User struct {
+	Id   int    `db:"id" json:"id"`
+	Name string `db:"name" json:"name"`
+}
+
 // HomeView 首页宣传页
 func HomeView(ctx *tg.Context) {
 	ctx.View("index.html", &HomeData{
@@ -28,7 +33,17 @@ func SayHello(ctx *tg.Context) {
 
 // SayWorld POST接口测试
 func SayWorld(ctx *tg.Context) {
-	req := new(api.SayHelloReq)
-	ctx.BindStructValidate(req)
+	var req api.SayHelloReq
+	ctx.BindStructValidate(&req)
 	ctx.Success(req.Name)
+}
+
+func UserList(ctx *tg.Context) {
+	var user []User
+	err := tg.Db("user").Select(&user)
+	if err != nil {
+		ctx.Fail(err.Error())
+		return
+	}
+	ctx.Success(user)
 }

@@ -3,7 +3,9 @@ package middleware
 import (
 	"fmt"
 	"github.com/think-go/tg"
+	"github.com/think-go/tg/tgcfg"
 	"github.com/think-go/tg/tglog"
+	"github.com/think-go/tg/tgtoken"
 	"net/http"
 	"time"
 )
@@ -35,5 +37,15 @@ func Logger() tg.HandlerFunc {
 		stop := time.Now()
 		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), stop.Sub(start), ctx.Request.Method, ctx.Request.RequestURI)
 		tglog.Log().Info(log)
+	}
+}
+
+// Authorization 验证中间件
+func Authorization() tg.HandlerFunc {
+	return func(ctx *tg.Context) {
+		authorization := ctx.Request.Header.Get("Authorization")
+		token := tgtoken.GetAuthorization(authorization)
+		tgtoken.ParseToken(token, tgcfg.Config.Get("jwtKey").String())
+		ctx.Next()
 	}
 }
