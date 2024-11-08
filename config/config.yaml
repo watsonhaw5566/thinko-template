@@ -17,6 +17,10 @@ log:
 mysql:
   default:
     link: "think-sso:dcGLEpj5JZReztBw@tcp(123.56.82.75:3306)/think-sso?charset=utf8mb4&parseTime=true&loc=Local"
+    debug: false #是否开启全局SQL打印
+    createTime: "delete_time" #创建时间字段名
+    updateTime: "update_time" #更新时间字段名
+    deleteTime: "delete_time" #删除时间字段名
     maxOpen: 100 #最大打开连接数
     maxIdle: 50 #最大空闲连接数
     maxIdleTime: 0 #连接在空闲状态下的最大存活时间

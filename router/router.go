@@ -20,8 +20,5 @@ func BindController(engine *tg.Engine) {
 	router := engine.Group("/api/v1")
 	{
 		router.GET("hello", controller.SayHello)
-		router.POST("world", controller.SayWorld)
 	}
-
-	engine.POST("/user", controller.UserList)
 }
