@@ -55,7 +55,7 @@ think-go
 ├── main.go                // 入口文件
 ├── go.mod
 ├── go.sum
-├── README.md
+└── README.md
 ```
 
 ## 安装
