@@ -2,7 +2,7 @@ module think-go
 
 go 1.23.2
 
-require github.com/think-go/tg v1.0.3
+require github.com/think-go/tg v1.0.4
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

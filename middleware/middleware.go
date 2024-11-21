@@ -20,7 +20,7 @@ func Cors() tg.HandlerFunc {
 		ctx.Response.Header().Set("Access-Control-Expose-Headers", "Content-Length, Access-ControlAllow-Origin, Access-Control-Allow-Headers, Content-Type")
 		ctx.Response.Header().Set("Access-Control-Allow-Credentials", "true")
 		if method == "OPTIONS" {
-			ctx.Fail("OPTIONS", tg.FailOptions{
+			ctx.Fail("OPTIONS", tg.FailOption{
 				StatusCode: http.StatusNoContent,
 				ErrorCode:  http.StatusNoContent,
 			})
