@@ -31,7 +31,7 @@ redis:
   default:
     addr: "127.0.0.1:3679"
     password: ""
-    db: 0
+    db: 0 #索引
     poolSize: 100 #最大连接池
 
 # 自定义额外的一些配置写下面
