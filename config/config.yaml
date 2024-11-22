@@ -16,7 +16,7 @@ log:
 # mysql相关配置
 mysql:
   default:
-    link: "x:x@tcp(127.0.0.1:3306)/x?charset=utf8mb4&parseTime=true&loc=Local"
+    link: "xxx:xxx@tcp(127.0.0.1:3306)/xxx?charset=utf8mb4&parseTime=true&loc=Local"
     debug: false #是否开启全局SQL打印
     createTime: "delete_time" #创建时间字段名
     updateTime: "update_time" #更新时间字段名
