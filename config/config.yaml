@@ -1,6 +1,6 @@
 # 服务相关配置
 server:
-  address: ":3699"
+  address: ":8080"
   tplPath: "view" # 模板文件路径
   staticPrefix: "static" # 静态资源路由前缀
   staticPath: "public" # 静态资源目录

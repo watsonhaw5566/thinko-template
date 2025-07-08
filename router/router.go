@@ -1,13 +1,13 @@
 package router
 
 import (
-	"github.com/think-go/tg"
+	"github.com/watsonhaw5566/think-core"
 	"think-go/app/controller"
 	"think-go/middleware"
 )
 
 // BindController 注册路由,绑定控制器,绑定中间件
-func BindController(engine *tg.Engine) {
+func BindController(engine *think.Engine) {
 	// 跨域中间件
 	engine.Use(middleware.Cors)
 	// 日志中间件

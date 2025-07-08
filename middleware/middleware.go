@@ -2,17 +2,17 @@ package middleware
 
 import (
 	"fmt"
-	"github.com/think-go/tg"
-	"github.com/think-go/tg/tgcfg"
-	"github.com/think-go/tg/tglog"
-	"github.com/think-go/tg/tgtoken"
+	"github.com/watsonhaw5566/think-core"
+	thinkconfig "github.com/watsonhaw5566/think-core/config"
+	thinklog "github.com/watsonhaw5566/think-core/log"
+	thinktoken "github.com/watsonhaw5566/think-core/token"
 	"net/http"
 	"time"
 )
 
 // Cors 跨域处理中间件
-func Cors() tg.HandlerFunc {
-	return func(ctx *tg.Context) {
+func Cors() think.HandlerFunc {
+	return func(ctx *think.Context) {
 		method := ctx.Request.Method
 		ctx.Response.Header().Set("Access-Control-Allow-Origin", "*")
 		ctx.Response.Header().Set("Access-Control-Allow-Headers", "Content-Type,AccessToken,X-CSRFToken, Authorization, Token")
@@ -20,7 +20,7 @@ func Cors() tg.HandlerFunc {
 		ctx.Response.Header().Set("Access-Control-Expose-Headers", "Content-Length, Access-ControlAllow-Origin, Access-Control-Allow-Headers, Content-Type")
 		ctx.Response.Header().Set("Access-Control-Allow-Credentials", "true")
 		if method == "OPTIONS" {
-			ctx.Fail("OPTIONS", tg.FailOption{
+			ctx.Fail("OPTIONS", think.FailOption{
 				StatusCode: http.StatusNoContent,
 				ErrorCode:  http.StatusNoContent,
 			})
@@ -30,22 +30,22 @@ func Cors() tg.HandlerFunc {
 }
 
 // Logger 日志中间件
-func Logger() tg.HandlerFunc {
-	return func(ctx *tg.Context) {
+func Logger() think.HandlerFunc {
+	return func(ctx *think.Context) {
 		start := time.Now()
 		ctx.Next()
 		stop := time.Now()
 		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), stop.Sub(start), ctx.Request.Method, ctx.Request.RequestURI)
-		tglog.Log().Info(log)
+		thinklog.Log().Info(log)
 	}
 }
 
 // Authorization 验证中间件
-func Authorization() tg.HandlerFunc {
-	return func(ctx *tg.Context) {
+func Authorization() think.HandlerFunc {
+	return func(ctx *think.Context) {
 		authorization := ctx.Request.Header.Get("Authorization")
-		token := tgtoken.GetAuthorization(authorization)
-		tgtoken.ParseToken(token, tgcfg.Config.Get("jwtKey").String())
+		token := thinktoken.GetAuthorization(authorization)
+		thinktoken.ParseToken(token, thinkconfig.Config.Get("jwtKey").String())
 		ctx.Next()
 	}
 }

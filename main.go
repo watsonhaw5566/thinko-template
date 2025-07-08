@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/think-go/tg/tgsv"
+	thinkservice "github.com/watsonhaw5566/think-core/service"
 	"think-go/router"
 )
 
 func main() {
-	tgsv.Run(router.BindController)
+	thinkservice.Run(router.BindController)
 }
