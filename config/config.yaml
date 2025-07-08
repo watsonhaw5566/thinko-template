@@ -10,7 +10,7 @@ server:
 log:
   path: "logs"
   name: "log"
-  model: "file" # console | file
+  model: "console" # console | file
   maxAge: 30 # 日志多少天后自动删除, 以天为单位
 
 # mysql相关配置
