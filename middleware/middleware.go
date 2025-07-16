@@ -35,7 +35,7 @@ func Logger() thinko.HandlerFunc {
 		start := time.Now()
 		ctx.Next()
 		stop := time.Now()
-		log := fmt.Sprintf("[ThinkGO] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), stop.Sub(start), ctx.Request.Method, ctx.Request.RequestURI)
+		log := fmt.Sprintf("[Thinko] | %s | %d | %s | %s | %s | %s |", time.Now().Format("2006-01-02 15:04:05"), 200, ctx.ClientIP(), stop.Sub(start), ctx.Request.Method, ctx.Request.RequestURI)
 		tkLog.Log().Info(log)
 	}
 }
