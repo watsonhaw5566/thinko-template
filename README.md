@@ -15,7 +15,7 @@ git clone https://github.com/watsonhaw5566/thinko.git && cd think-core/cmd/think
 然后就可以在全局通过 ``thinko`` 命令去创建项目
 
 ```
-think init demo-app
+thinko init demo-app
 ```
 
 #### 方式二
