@@ -2,7 +2,7 @@ module think-go
 
 go 1.23.2
 
-require github.com/watsonhaw5566/think-core v0.0.3
+require github.com/watsonhaw5566/thinko v0.0.6
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
