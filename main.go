@@ -1,10 +1,10 @@
 package main
 
 import (
-	thinkservice "github.com/watsonhaw5566/think-core/service"
+	tkService "github.com/watsonhaw5566/thinko/service"
 	"think-go/router"
 )
 
 func main() {
-	thinkservice.Run(router.BindController)
+	tkService.Run(router.BindController)
 }

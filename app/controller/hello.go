@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/watsonhaw5566/think-core"
+	"github.com/watsonhaw5566/thinko"
 )
 
 // HomeData 首页宣传页测试数据
@@ -12,7 +12,7 @@ type HomeData struct {
 }
 
 // HomeView 首页宣传页
-func HomeView(ctx *think.Context) {
+func HomeView(ctx *thinko.Context) {
 	ctx.View("index.html", &HomeData{
 		Count:    9863763,
 		Title:    "ThinkGO",
@@ -21,7 +21,7 @@ func HomeView(ctx *think.Context) {
 }
 
 // SayHello GET接口测试
-func SayHello(ctx *think.Context) {
+func SayHello(ctx *thinko.Context) {
 	name := ctx.GetQuery("name")
 	ctx.Success(name + "说hello")
 }
